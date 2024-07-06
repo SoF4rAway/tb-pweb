@@ -1,0 +1,30 @@
+{% extends "index.html" %}
+{% block content %}
+    <div class="container-fluid py-1">
+        <h2 class="text-center py-2">Akreditasi Departemen</h2>
+        {% for departemen, akreditasi_list in akreditasi_data.items() %}
+            <div class="container-fluid card">
+                <div class="px-2">
+                    <h3 class="py-4">{{ departemen }}</h3>
+                    <table class="table table-hover table-striped">
+                        <tr>
+                            <th>Dokumen Akreditasi</th>
+                            <th>Lembaga Akreditasi</th>
+                            <th>Peringkat</th>
+                            <th>Masa Berlaku</th>
+                        </tr>
+                        {% for akreditasi in akreditasi_list %}
+                            <tr>
+                                <td><a href="{{ url_for('views.download_akreditasi', akreditasi_id=akreditasi.id) }}">{{ akreditasi.dokumen }}</a></td>
+                                <td>{{ akreditasi.lembaga }}</td>
+                                <td>{{ akreditasi.peringkat }}</td>
+                                <td>{{ akreditasi.date_started.strftime('%Y-%m-%d') }} to {{ akreditasi.date_end.strftime('%Y-%m-%d') }}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+            <br>
+        {% endfor %}
+    </div>
+{% endblock %}

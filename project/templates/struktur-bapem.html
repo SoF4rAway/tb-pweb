@@ -1,0 +1,26 @@
+{% extends "index.html" %}
+{% block content %}
+    <div class="container-fluid">
+        <h2 class="text-center">Struktur Organisasi</h2>
+        <div class="px-2">
+            <h5>Badan Penjaminan Mutu</h5>
+            <table class="table table-hover">
+                <!-- Display quality assurance body -->
+            {% for dosen in quality_assurance_body %}
+                <tr>
+                    <td>{{ dosen.jabatan }}</td>
+                    <td>{{ dosen.nama }}</td>
+                    <td>{{ dosen.nip }}</td>
+                </tr>
+            {% endfor %}
+                {% for dosen in departement_quality_assurance_body %}
+                    <tr>
+                        <td>{{ dosen.jabatan }}</td>
+                        <td>{{ dosen.nama }}</td>
+                        <td>{{ dosen.nip }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endblock %}

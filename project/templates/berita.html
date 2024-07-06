@@ -1,0 +1,11 @@
+{% extends "index.html" %}
+{% block content %}
+    <div class="container">
+        <!-- Display the Berita image(s) -->
+        {% for image in berita.images %}
+            <img src="{{ url_for('static', filename=image.img_path) }}" alt="Berita Image">
+        {% endfor %}
+        <h2>{{ berita.title }}</h2>
+        <p>{{ berita.content }}</p>
+    </div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "index.html" %}
+{% block content %}
+    <div class="container-fluid">
+        <h2 class="text-center">Dokumen SOP</h2>
+        <div class="px-2">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th class="col-2">No</th>
+                        <th class="col-7">Nama Dokumen</th>
+                        <th class="col-3">Download</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for document in sop_documents %}
+                        <tr>
+                            <td class="col-2">{{ loop.index }}</td>
+                            <td class="col-7">{{ document.dokumen_name }}</td>
+                            <td class="col-3">
+                                <a href="{{ url_for('documents.download_document', document_id=document.id) }}" class="btn btn-primary">Download</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

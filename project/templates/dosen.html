@@ -1,0 +1,38 @@
+{% extends "index.html" %}
+{% block content %}
+    <h2 class="text-center">Dosen</h2>
+    <div class="container-fluid">
+        <div class="row g-2">
+            {% for dosen in dosen_list %}
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-2">
+                    <div class="card p-2">
+                        <div class="row">
+                            <div class="col-5 position-relative">
+                                <img src="{{ url_for('static', filename='Profil_dosen/' + dosen.profile_img|string) }}" alt="{{ dosen.nama }} Image" height="200" class="position-absolute top-50 start-50 translate-middle" >
+                            </div>
+                            <div class="col-7">
+                                <div class="row">
+                                    <h5>{{ dosen.nama }}</h5>
+                                </div>
+                                <div class="row">
+                                    <p>{{ dosen.nip }}</p>
+                                </div>
+                                <div class="row">
+                                    <p>{{ dosen.departemen }}</p>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <a href="{{ dosen.sinta }}" target="_blank"><img src="{{ url_for('static', filename='sinta.png') }}" alt="Sinta Logo" height="75"></a>
+                                    </div>
+                                    <div class="col-6">
+                                        <a href="{{ dosen.scopus }}" target="_blank"><img src="{{ url_for('static', filename='scopus_logo.svg') }}" alt="Scopus Logo" height="50"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

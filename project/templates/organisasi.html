@@ -1,0 +1,83 @@
+{% extends "index.html" %}
+{% block content %}
+    <div class="container-fluid">
+        <h2 class="text-center py-2">Struktur Organisasi</h2>
+        <div class="px-2">
+            <h5>Pimpinan Fakultas</h5>
+                <table class="table table-hover">
+                    {% set sorted_fakultas_leaders = fakultas_leaders | sort(attribute='id') %}
+                    {% for dosen in sorted_fakultas_leaders %}
+                        <tr>
+                            <td>{{ dosen.jabatan }}</td>
+                            <td>{{ dosen.nama }}</td>
+                            <td>{{ dosen.nip }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+
+
+            <h5>Pimpinan Departemen</h5>
+            <table class="table table-hover">
+                <!-- Display leaders of departments -->
+                    {% set sorted_department_leaders = department_leaders | sort(attribute='id') %}
+                    {% for dosen in sorted_department_leaders %}
+                    <tr>
+                        <td>{{ dosen.departemen }}</td>
+                        <td>{{ dosen.nama }}</td>
+                        <td>{{ dosen.nip }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+
+            <h5>Kepala Laboratorium</h5>
+            <table class="table table-hover">
+                <!-- Display heads of laboratories -->
+                {% for dosen in lab_heads %}
+                    <tr>
+                        <td>{{ dosen.jabatan }}</td>
+                        <td>{{ dosen.nama }}</td>
+                        <td>{{ dosen.nip }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+
+            <h5>Badan Penjaminan Mutu</h5>
+            <table class="table table-hover">
+                <!-- Display quality assurance body -->
+                <tr>
+                    <td>{{ quality_assurance_body.jabatan }}</td>
+                    <td>{{ quality_assurance_body.nama }}</td>
+                    <td>{{ quality_assurance_body.nip }}</td>
+                </tr>
+                {% for dosen in departement_quality_assurance_body %}
+                    <tr>
+                        <td>{{ dosen.jabatan }}</td>
+                        <td>{{ dosen.nama }}</td>
+                        <td>{{ dosen.nip }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+            <h5>Administrative Staff</h5>
+            <table class="table table-hover">
+                <!-- Display Kepala Kantor -->
+                <tr>
+                    <td>{{ kepala_kantor.jabatan }}</td>
+                    <td>{{ kepala_kantor.nama }}</td>
+                    <td>{{ kepala_kantor.nip }}</td>
+                </tr>
+                <!-- Display Kasi Administrasi dan Umum -->
+                <tr>
+                    <td>{{ kasi_admin_umum.jabatan }}</td>
+                    <td>{{ kasi_admin_umum.nama }}</td>
+                    <td>{{ kasi_admin_umum.nip }}</td>
+                </tr>
+                <!-- Display Kasi Keuangan dan Aset -->
+                <tr>
+                    <td>{{ kasi_keuangan_aset.jabatan }}</td>
+                    <td>{{ kasi_keuangan_aset.nama }}</td>
+                    <td>{{ kasi_keuangan_aset.nip }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+{% endblock %}
